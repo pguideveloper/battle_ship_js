@@ -1,12 +1,13 @@
 class Board {
-    NUMBER_OF_SQUARES;
+    NUMBER_OF_SQUARES = 10;
     alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    ship;
 
-    constructor() {
-        this.NUMBER_OF_SQUARES = 10;        
+    setShip(ship) {
+        this.ship = ship;
     }
 
-    draw() {
+    draw_board() {
         let square_div = document.querySelector(".squares");
         square_div.style.width = `${(50 * this.NUMBER_OF_SQUARES)}px`;
 
@@ -42,11 +43,32 @@ class Board {
     }
 
     click_to_attack(element, clicked_square) {
-        let position_to_attack = element.target.attributes.getNamedItem("data-target").value;
-        clicked_square.style.backgroundColor = "#871818"; //Set background of clicked area
 
-        let board_square = document.getElementById(position_to_attack);
-        board_square.style.backgroundColor = "#871818";
-        board_square.style.border = "#871818";
+        let position_to_attack = element.target.attributes.getNamedItem("data-target").value;
+
+        if (this.check_if_position_has_a_ship(position_to_attack)) {
+            clicked_square.style.backgroundColor = "#871818";
+        } else {
+            clicked_square.style.backgroundColor = "#FFFFFF";
+        }
+
+        /**
+         * @todo
+         * When we have a second player we don't need to paint the main board, just attack board.
+         * But for now we're painting just for visualize the conception.
+         */
+        if (this.check_if_position_has_a_ship(position_to_attack)) {
+            let board_square = document.getElementById(position_to_attack);
+            board_square.style.backgroundColor = "#871818";
+            board_square.style.border = "#871818";
+        }
+    }
+
+    check_if_position_has_a_ship(position) {
+        for(let i = 0; i <= this.ship.ships_on_board.length - 1; i++) {
+            if (this.ship.ships_on_board[i].includes(position))
+                return true;
+        }
+        return false;
     }
 }
