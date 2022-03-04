@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>BattleshipJS</title>
+</head>
+<body>
+    <div id="board">
+        <div class="column">
+            <div class="column_naming intersection"></div>
+            <div class="column_naming">1</div>
+            <div class="column_naming">2</div>
+            <div class="column_naming">3</div>
+            <div class="column_naming">4</div>
+            <div class="column_naming">5</div>
+            <div class="column_naming">6</div>
+            <div class="column_naming">7</div>
+            <div class="column_naming">8</div>
+            <div class="column_naming">9</div>
+            <div class="column_naming">10</div>
+        </div>
+        <div class="line">
+            <div class="line_naming">A</div>
+            <div class="line_naming">B</div>
+            <div class="line_naming">C</div>
+            <div class="line_naming">D</div>
+            <div class="line_naming">E</div>
+            <div class="line_naming">F</div>
+            <div class="line_naming">G</div>
+            <div class="line_naming">H</div>
+            <div class="line_naming">I</div>
+            <div class="line_naming">J</div>
+        </div>
+        <div class="squares"></div>
+    </div>
+    <div id="game_stats_area">
+        <div class="title">Battleship <img src="./assets/js.png" alt=""></div>
+        <div class="available_ships">
+            <div class="ship">Carrier: 2</div>
+            <div class="ship">Battleship: 2</div>
+            <div class="ship">Destroyer: 3</div>
+            <div class="ship">Submarine: 3</div>
+            <div class="ship">Patrol boat: 4</div>
+        </div>
+
+        <div class="attack_board">
+            <div class="mini_column">
+                <div class="mini_column_naming intersection"></div>
+                <div class="mini_column_naming">1</div>
+                <div class="mini_column_naming">2</div>
+                <div class="mini_column_naming">3</div>
+                <div class="mini_column_naming">4</div>
+                <div class="mini_column_naming">5</div>
+                <div class="mini_column_naming">6</div>
+                <div class="mini_column_naming">7</div>
+                <div class="mini_column_naming">8</div>
+                <div class="mini_column_naming">9</div>
+                <div class="mini_column_naming">10</div>
+            </div>
+            <div class="mini_line">
+                <div class="mini_line_naming">A</div>
+                <div class="mini_line_naming">B</div>
+                <div class="mini_line_naming">C</div>
+                <div class="mini_line_naming">D</div>
+                <div class="mini_line_naming">E</div>
+                <div class="mini_line_naming">F</div>
+                <div class="mini_line_naming">G</div>
+                <div class="mini_line_naming">H</div>
+                <div class="mini_line_naming">I</div>
+                <div class="mini_line_naming">J</div>
+            </div>
+            <div class="mini_squares"></div>
+        </div>
+
+    <script src="./engine/Board.js"></script>
+    <script src="./engine/Ship.js"></script>
+    <script src="./engine/Game.js"></script>
+    <script>
+        const game = new Game();
+        game.start();
+        game.add_ship("A1", "vertical", "carrier");
+        game.add_ship("A3", "horizontal", "carrier");
+        game.add_ship("C5", "vertical", "patrol_boat");
+    </script>
+</body>
+</html>
