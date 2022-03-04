@@ -1,4 +1,5 @@
 class Ship {
+    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     types_and_sizes = {
         carrier: 5,
         battleship: 4,
@@ -11,10 +12,6 @@ class Ship {
     start_position;
     board; 
     ships_on_board = [];
-
-    constructor(board) {
-        this.board = board;
-    }
 
     draw(start_position, direction, type) {
         this.direction = direction;
@@ -46,7 +43,7 @@ class Ship {
                 column++;
                 position = line + column;
             } else {
-                position = this.board.alphabet[this.board.alphabet.indexOf(line) + 1] + column;   
+                position = this.alphabet[this.alphabet.indexOf(line) + 1] + column;   
             }
         }
     }
